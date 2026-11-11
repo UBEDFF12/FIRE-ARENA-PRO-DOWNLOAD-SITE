@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FIRE ARENA PRO - Free Fire Championship & Daily Cash Tournaments</title>
+  <meta name="description" content="Join India's premier Free Fire esports tournament platform. Play daily custom rooms, earn real cash per kill, and withdraw instantly via UPI (PhonePe, Paytm, Google Pay).">
+  <meta property="og:title" content="FIRE ARENA PRO - Free Fire Championship & Daily Cash Tournaments">
+  <meta property="og:description" content="Play. Win. Earn Real Cash. Daily Free Fire Tournaments with instant UPI withdrawals and ₹10 free signup bonus.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#070709">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS RESET & DESIGN TOKENS */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg-dark: #070709;
+      --bg-surface: #0f1015;
+      --bg-card: rgba(18, 20, 28, 0.82);
+      --bg-card-hover: rgba(28, 30, 42, 0.9);
+      --crimson: #ff2a3b;
+      --crimson-dark: #c81e2d;
+      --crimson-glow: rgba(255, 42, 59, 0.45);
+      --orange-gold: #f59e0b;
+      --orange-glow: rgba(245, 158, 11, 0.35);
+      --emerald: #10b981;
+      --whatsapp-green: #25D366;
+      --text-main: #ffffff;
+      --text-muted: #9ba3af;
+      --text-subtle: #6b7280;
+      --border-metallic: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(255, 42, 59, 0.35);
+      --font-display: 'Teko', sans-serif;
+      --font-tech: 'Rajdhani', sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 42, 59, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(255, 42, 59, 0.1) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Outer Wrapper: Centered mobile canvas for ultra-sleek esports feel */
+    .app-viewport {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background-color: #0b0c10;
+      box-shadow: 0 0 70px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 42, 59, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Ambient Glow Accents */
+    .app-viewport::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 240px;
+      background: radial-gradient(circle, var(--crimson-glow) 0%, rgba(245, 158, 11, 0.15) 50%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* STICKY TOP NAVIGATION */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: rgba(11, 12, 16, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 42, 59, 0.2);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-logo-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 42, 59, 0.4);
+      box-shadow: 0 0 12px var(--crimson-glow);
+      background: #11131a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text-lockup {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: #ffffff;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .brand-title span {
+      color: var(--crimson);
+      text-shadow: 0 0 8px var(--crimson-glow);
+    }
+
+    .brand-tagline-micro {
+      font-family: var(--font-tech);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--orange-gold);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      font-family: var(--font-tech);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--crimson) 0%, #d81627 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 0 14px var(--crimson-glow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+
+    .nav-cta-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      padding: 24px 16px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(255, 42, 59, 0.12);
+      border: 1px solid rgba(255, 42, 59, 0.35);
+      border-radius: 9999px;
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ff8591;
+      margin-bottom: 14px;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--crimson);
+      box-shadow: 0 0 8px var(--crimson);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Hero Crest Logo */
+    .hero-logo-box {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 16px;
+      border-radius: 24px;
+      padding: 3px;
+      background: linear-gradient(135deg, rgba(255, 42, 59, 0.8), rgba(245, 158, 11, 0.6), rgba(255, 255, 255, 0.1));
+      box-shadow: 0 0 35px var(--crimson-glow), 0 0 15px var(--orange-glow);
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 25px var(--crimson-glow); }
+      100% { box-shadow: 0 0 42px rgba(255, 42, 59, 0.65), 0 0 20px var(--orange-glow); }
+    }
+
+    .hero-logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 21px;
+      overflow: hidden;
+      background: #0d0f15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.85rem;
+      line-height: 0.95;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 6px;
+    }
+
+    .hero-title .glow-red {
+      color: var(--crimson);
+      text-shadow: 0 0 16px var(--crimson-glow);
+    }
+
+    .hero-title .glow-gold {
+      color: var(--orange-gold);
+      text-shadow: 0 0 14px var(--orange-glow);
+    }
+
+    .hero-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      max-width: 380px;
+      margin: 0 auto 18px;
+    }
+
+    /* REWARD HIGHLIGHTS STRIP */
+    .reward-pill-container {
+      width: 100%;
+      background: linear-gradient(180deg, rgba(25, 28, 40, 0.8) 0%, rgba(15, 17, 24, 0.85) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 12px 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .reward-stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .reward-stat-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .reward-label {
+      font-family: var(--font-tech);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .reward-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+    }
+
+    .reward-value.red {
+      color: #ff4757;
+      text-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+    }
+    .reward-value.gold {
+      color: var(--orange-gold);
+      text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+    .reward-value.green {
+      color: var(--emerald);
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+
+    /* PRIMARY PULSATING CTA BUTTON */
+    .cta-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .btn-download-primary {
+      position: relative;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ff2a3b 0%, #ff5261 40%, #c81e2d 100%);
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 30px var(--crimson-glow), 0 0 20px rgba(255, 42, 59, 0.35);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+      animation: ctaPulse 2.4s infinite;
+    }
+
+    @keyframes ctaPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px var(--crimson-glow);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 12px 35px rgba(255, 42, 59, 0.75), 0 0 24px rgba(245, 158, 11, 0.4);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px var(--crimson-glow);
+      }
+    }
+
+    .btn-download-primary::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: rotate(30deg);
+      animation: shineSweep 3.2s infinite;
+    }
+
+    @keyframes shineSweep {
+      0% { left: -60%; }
+      30%, 100% { left: 140%; }
+    }
+
+    .btn-download-primary:active {
+      transform: scale(0.98);
+    }
+
+    .download-icon-wrap {
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .download-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* TRUST BADGES STRIP */
+    .trust-meta-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      padding: 0 4px;
+    }
+
+    .trust-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-tech);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .trust-meta-item svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      color: var(--emerald);
+    }
+
+    .trust-meta-item.apk-size svg {
+      color: var(--orange-gold);
+    }
+
+    .meta-divider {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* LIVE TRUST COUNTER BAR */
+    .counter-strip-section {
+      padding: 0 16px 20px;
+    }
+
+    .counter-card {
+      background: linear-gradient(135deg, rgba(20, 22, 32, 0.95) 0%, rgba(13, 14, 20, 0.95) 100%);
+      border: 1px solid rgba(255, 42, 59, 0.25);
+      border-radius: 14px;
+      padding: 14px 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .counter-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .counter-num {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .counter-num.highlight {
+      color: var(--orange-gold);
+      text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+
+    .counter-title {
+      font-family: var(--font-tech);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 3px;
+    }
+
+    /* REFERRAL BONUS CODE BOX */
+    .referral-section {
+      padding: 0 16px 22px;
+    }
+
+    .referral-box {
+      background: linear-gradient(135deg, rgba(255, 42, 59, 0.12) 0%, rgba(245, 158, 11, 0.08) 100%);
+      border: 1px dashed rgba(255, 42, 59, 0.45);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .referral-box::before {
+      content: 'FREE BONUS';
+      position: absolute;
+      top: 6px;
+      right: -24px;
+      background: var(--crimson);
+      color: #ffffff;
+      font-family: var(--font-tech);
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 2px 26px;
+      transform: rotate(45deg);
+      box-shadow: 0 0 8px var(--crimson-glow);
+    }
+
+    .referral-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .referral-title {
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fca5a5;
+    }
+
+    .referral-code-display {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      line-height: 1.1;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    .referral-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .btn-copy-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: #ffffff;
+      color: #0b0c10;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-copy-code:hover {
+      background: #f1f5f9;
+    }
+
+    .btn-copy-code:active {
+      transform: scale(0.95);
+    }
+
+    .btn-copy-code.copied {
+      background: var(--emerald);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    /* SECTION TITLES */
+    .section-header {
+      padding: 0 16px 12px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--crimson);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--crimson);
+    }
+
+    .section-sublink {
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--orange-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    /* UPCOMING MATCHES CARDS */
+    .matches-section {
+      padding: 0 16px 24px;
+    }
+
+    .match-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      background: rgba(18, 20, 28, 0.7);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .match-tab-btn {
+      flex: 1;
+      padding: 7px 0;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .match-tab-btn.active {
+      background: var(--crimson);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--crimson-glow);
+    }
+
+    .match-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .match-card {
+      background: linear-gradient(135deg, rgba(20, 23, 33, 0.9) 0%, rgba(13, 15, 22, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .match-card:hover {
+      border-color: rgba(255, 42, 59, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .match-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .match-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(255, 42, 59, 0.15);
+      border: 1px solid rgba(255, 42, 59, 0.3);
+      font-family: var(--font-tech);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #ffa4ac;
+      text-transform: uppercase;
+    }
+
+    .match-time {
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--orange-gold);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .match-title {
+      font-family: var(--font-tech);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .match-map-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .match-payouts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 8px 6px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .payout-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payout-label {
+      font-family: var(--font-tech);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .payout-val {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #ffffff;
+    }
+
+    .payout-val.kill {
+      color: var(--crimson);
+    }
+
+    .payout-val.win {
+      color: var(--orange-gold);
+    }
+
+    .match-progress-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--crimson), var(--orange-gold));
+      border-radius: 9999px;
+    }
+
+    .progress-text {
+      font-family: var(--font-tech);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .btn-match-join {
+      padding: 5px 12px;
+      background: linear-gradient(135deg, var(--crimson) 0%, #d81627 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--crimson-glow);
+    }
+
+    /* FEATURE GRID (2x2) */
+    .features-section {
+      padding: 0 16px 24px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg, rgba(20, 23, 33, 0.85) 0%, rgba(13, 14, 21, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 42, 59, 0.4), transparent);
+    }
+
+    .feature-icon-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 42, 59, 0.12);
+      border: 1px solid rgba(255, 42, 59, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--crimson);
+      margin-bottom: 10px;
+    }
+
+    .feature-icon-circle.gold {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--orange-gold);
+    }
+
+    .feature-icon-circle.green {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--emerald);
+    }
+
+    .feature-icon-circle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .feature-heading {
+      font-family: var(--font-tech);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .feature-text {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* 3-STEP "HOW TO PLAY" GUIDE */
+    .how-to-play-section {
+      padding: 0 16px 24px;
+    }
+
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(18, 20, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .step-number-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--crimson) 0%, #a8101d 100%);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px var(--crimson-glow);
+    }
+
+    .step-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-name {
+      font-family: var(--font-tech);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .step-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* WHATSAPP COMMUNITY CTA */
+    .community-section {
+      padding: 0 16px 24px;
+    }
+
+    .btn-whatsapp-community {
+      width: 100%;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.35);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-whatsapp-community:active {
+      transform: scale(0.98);
+    }
+
+    .whatsapp-badge {
+      font-size: 0.65rem;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 2px 7px;
+      border-radius: 9999px;
+      font-family: var(--font-tech);
+      font-weight: 700;
+      color: #e2fbee;
+    }
+
+    /* FAQ ACCORDION */
+    .faq-section {
+      padding: 0 16px 24px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: rgba(18, 20, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 12px 14px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-family: var(--font-tech);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+
+    .faq-question svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+      color: var(--crimson);
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 14px 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 8px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* APK INSTALLATION GUIDE MODAL / DRAWER */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-drawer {
+      width: 100%;
+      max-width: 480px;
+      background: #11131a;
+      border-top: 1px solid rgba(255, 42, 59, 0.4);
+      border-radius: 20px 20px 0 0;
+      padding: 20px 18px 28px;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--crimson-glow);
+      animation: slideUp 0.25s ease-out;
+      position: relative;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .drawer-handle {
+      width: 40px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      margin: 0 auto 16px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .btn-close-modal {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .guide-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.35;
+    }
+
+    .guide-step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 42, 59, 0.2);
+      color: var(--crimson);
+      font-family: var(--font-tech);
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER & LEGAL DISCLAIMER */
+    .app-footer {
+      margin-top: auto;
+      padding: 24px 16px 85px; /* Extra bottom pad for floating toast and navigation */
+      background: #08090d;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-brand span {
+      color: var(--crimson);
+    }
+
+    .footer-disclaimer {
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      text-align: justify;
+      text-align-last: center;
+    }
+
+    .footer-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .age-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--crimson);
+      color: var(--crimson);
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+
+    .footer-pill {
+      font-family: var(--font-tech);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+
+    .footer-copyright {
+      font-size: 0.65rem;
+      color: #4b5563;
+    }
+
+    /* INTERACTIVE FLOATING NOTIFICATION TOAST */
+    .floating-ticker-toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      width: calc(100% - 32px);
+      max-width: 440px;
+      z-index: 60;
+      background: rgba(14, 16, 23, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 42, 59, 0.4);
+      border-radius: 12px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), 0 0 15px var(--crimson-glow);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-ticker-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 42, 59, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--crimson);
+    }
+
+    .toast-icon-box.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald);
+    }
+
+    .toast-icon-box svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .toast-content {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .toast-text {
+      font-family: var(--font-tech);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toast-time {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .toast-close {
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      cursor: pointer;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* COPY NOTIFICATION TOAST */
+    .clipboard-toast {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: #10b981;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: var(--font-tech);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.5);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .clipboard-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* SVG FALLBACK LOGO DISPLAY */
+    .svg-fallback-crest {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SINGLE FILE MAIN VIEWPORT WRAPPER -->
+  <main class="app-viewport">
+
+    <!-- STICKY TOP NAVBAR -->
+    <header class="navbar">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-logo-wrap">
+          <img src="/logo.png" alt="FIRE ARENA PRO Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('nav-svg-fallback').style.display='block';">
+          <svg id="nav-svg-fallback" class="svg-fallback-crest" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5 L88 24 L88 56 C88 78 50 95 50 95 C50 95 12 78 12 56 L12 24 Z" fill="#0d0f15" stroke="#ff2a3b" stroke-width="4"/>
+            <path d="M50 18 C58 35 72 45 68 64 C64 78 50 82 50 82 C50 82 36 78 32 64 C28 45 42 35 50 18 Z" fill="url(#navFlameGrad)"/>
+            <defs>
+              <linearGradient id="navFlameGrad" x1="50" y1="18" x2="50" y2="82" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f59e0b"/>
+                <stop offset="1" stop-color="#ff2a3b"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text-lockup">
+          <h1 class="brand-title">FIRE <span>ARENA</span></h1>
+          <span class="brand-tagline-micro">ESPORTS PRO</span>
+        </div>
+      </a>
+
+      <!-- Quick Download CTA -->
+      <a href="/app-release.apk" download="FireArena.apk" class="nav-cta-btn" id="navDownloadBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>GET APK</span>
+      </a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-badge-pill">
+        <span class="pulse-dot"></span>
+        <span>FREE FIRE CHAMPIONSHIP 2026</span>
+      </div>
+
+      <!-- Glowing Official Logo with SVG Fallback -->
+      <div class="hero-logo-box">
+        <div class="hero-logo-inner">
+          <img src="/logo.png" alt="FIRE ARENA PRO Tournament Logo" class="hero-logo-img" onerror="this.style.display='none'; document.getElementById('hero-svg-fallback').style.display='block';">
+          <svg id="hero-svg-fallback" class="svg-fallback-crest" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5 L88 24 L88 56 C88 78 50 95 50 95 C50 95 12 78 12 56 L12 24 Z" fill="#0d0f15" stroke="#ff2a3b" stroke-width="4"/>
+            <path d="M50 18 C58 35 72 45 68 64 C64 78 50 82 50 82 C50 82 36 78 32 64 C28 45 42 35 50 18 Z" fill="url(#heroFlameGrad)"/>
+            <path d="M50 36 C54 46 62 52 60 64 C57 73 50 76 50 76 C50 76 43 73 40 64 C38 52 46 46 50 36 Z" fill="#fff"/>
+            <defs>
+              <linearGradient id="heroFlameGrad" x1="50" y1="18" x2="50" y2="82" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f59e0b"/>
+                <stop offset="1" stop-color="#ff2a3b"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="hero-title">
+        PLAY. WIN. <br><span class="glow-red">EARN REAL</span> <span class="glow-gold">CASH.</span>
+      </h2>
+      <p class="hero-subtitle">
+        Daily Free Fire esports custom tournaments with instant UPI cashouts. Turn every headshot into real bank balance!
+      </p>
+
+      <!-- Payout Highlights Strip -->
+      <div class="reward-pill-container">
+        <div class="reward-stat-card">
+          <span class="reward-label">Entry Fee</span>
+          <span class="reward-value green">₹20</span>
+        </div>
+        <div class="reward-stat-card">
+          <span class="reward-label">Per Kill</span>
+          <span class="reward-value red">₹15</span>
+        </div>
+        <div class="reward-stat-card">
+          <span class="reward-label">Booyah!</span>
+          <span class="reward-value gold">₹150+</span>
+        </div>
+      </div>
+
+      <!-- Pulsating Primary CTA Button -->
+      <div class="cta-container">
+        <a href="/app-release.apk" download="FireArena.apk" class="btn-download-primary" id="mainDownloadBtn">
+          <div class="download-icon-wrap">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </div>
+          <span>DOWNLOAD APK (v1.0)</span>
+        </a>
+      </div>
+
+      <!-- Safety & Trust Meta Badges -->
+      <div class="trust-meta-strip">
+        <span class="trust-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          100% Anti-Cheat Safe
+        </span>
+        <span class="meta-divider">|</span>
+        <span class="trust-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Instant UPI Cashout
+        </span>
+        <span class="meta-divider">|</span>
+        <span class="trust-meta-item apk-size">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Size: ~3.7 MB
+        </span>
+      </div>
+    </section>
+
+    <!-- LIVE TRUST COUNTER BAR -->
+    <section class="counter-strip-section">
+      <div class="counter-card">
+        <div class="counter-item">
+          <span class="counter-num" id="counterPlayers">2,850+</span>
+          <span class="counter-title">Active Players</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num highlight" id="counterPayout">₹50K+</span>
+          <span class="counter-title">Total Paid</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="counterMatches">1,240+</span>
+          <span class="counter-title">Daily Rooms</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num highlight">4.9★</span>
+          <span class="counter-title">User Rating</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERRAL CODE BONUS BOX -->
+    <section class="referral-section">
+      <div class="referral-box">
+        <div class="referral-content">
+          <span class="referral-title">SPECIAL SIGNUP BONUS</span>
+          <span class="referral-code-display" id="refCodeText">NAWA3773</span>
+          <span class="referral-desc">Get instant ₹10 cash bonus on registration</span>
+        </div>
+        <button class="btn-copy-code" id="btnCopyCode" title="Copy Referral Code">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copyBtnLabel">COPY CODE</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- LIVE CUSTOM TOURNAMENTS SHOWCASE -->
+    <section class="matches-section">
+      <div class="section-header">
+        <h3 class="section-title">TODAY'S TOURNAMENTS</h3>
+        <a href="#how-to-play" class="section-sublink" id="openGuideLink">How to Join?</a>
+      </div>
+
+      <!-- Match Filter Tabs -->
+      <div class="match-tabs">
+        <button class="match-tab-btn active" data-filter="all">All Modes</button>
+        <button class="match-tab-btn" data-filter="br">Solo BR</button>
+        <button class="match-tab-btn" data-filter="cs">Clash Squad 4v4</button>
+      </div>
+
+      <div class="match-list" id="matchList">
+        <!-- Match 1: Solo BR Bermuda -->
+        <div class="match-card" data-mode="br">
+          <div class="match-header">
+            <span class="match-mode-badge">Solo Battle Royale</span>
+            <span class="match-time">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              TODAY 07:30 PM
+            </span>
+          </div>
+          <div class="match-title">
+            <span>Bermuda Deathmatch #408</span>
+            <span class="match-map-tag">Map: Bermuda</span>
+          </div>
+          <div class="match-payouts-grid">
+            <div class="payout-item">
+              <span class="payout-label">Entry</span>
+              <span class="payout-val">₹20</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">Per Kill</span>
+              <span class="payout-val kill">₹15</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">1st Place</span>
+              <span class="payout-val win">₹250</span>
+            </div>
+          </div>
+          <div class="match-progress-row">
+            <div class="progress-bar-wrap">
+              <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+            <span class="progress-text">41/48 Joined</span>
+            <button class="btn-match-join trigger-download">JOIN</button>
+          </div>
+        </div>
+
+        <!-- Match 2: Clash Squad 4v4 Kalahari -->
+        <div class="match-card" data-mode="cs">
+          <div class="match-header">
+            <span class="match-mode-badge" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); color: #fcd34d;">Squad 4v4</span>
+            <span class="match-time">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              TODAY 08:15 PM
+            </span>
+          </div>
+          <div class="match-title">
+            <span>Clash Squad Pro League #112</span>
+            <span class="match-map-tag">Map: Kalahari</span>
+          </div>
+          <div class="match-payouts-grid">
+            <div class="payout-item">
+              <span class="payout-label">Entry / Slot</span>
+              <span class="payout-val">₹30</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">Per Kill</span>
+              <span class="payout-val kill">₹20</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">Winning Team</span>
+              <span class="payout-val win">₹480</span>
+            </div>
+          </div>
+          <div class="match-progress-row">
+            <div class="progress-bar-wrap">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+            <span class="progress-text">6/8 Squads</span>
+            <button class="btn-match-join trigger-download">JOIN</button>
+          </div>
+        </div>
+
+        <!-- Match 3: Solo BR Purgatory -->
+        <div class="match-card" data-mode="br">
+          <div class="match-header">
+            <span class="match-mode-badge">Solo Battle Royale</span>
+            <span class="match-time">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              TODAY 09:00 PM
+            </span>
+          </div>
+          <div class="match-title">
+            <span>Night Purgatory Mega War #409</span>
+            <span class="match-map-tag">Map: Purgatory</span>
+          </div>
+          <div class="match-payouts-grid">
+            <div class="payout-item">
+              <span class="payout-label">Entry</span>
+              <span class="payout-val">₹10</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">Per Kill</span>
+              <span class="payout-val kill">₹8</span>
+            </div>
+            <div class="payout-item">
+              <span class="payout-label">1st Place</span>
+              <span class="payout-val win">₹180</span>
+            </div>
+          </div>
+          <div class="match-progress-row">
+            <div class="progress-bar-wrap">
+              <div class="progress-fill" style="width: 50%;"></div>
+            </div>
+            <span class="progress-text">24/48 Joined</span>
+            <button class="btn-match-join trigger-download">JOIN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2x2 FEATURE GRID -->
+    <section class="features-section">
+      <div class="section-header">
+        <h3 class="section-title">WHY FIRE ARENA PRO?</h3>
+      </div>
+      <div class="feature-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h4 class="feature-heading">Instant Room ID & Pass</h4>
+          <p class="feature-text">Delivered 10 mins before match directly in-app and via SMS with 1-tap copy.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-circle green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h4 class="feature-heading">Instant UPI Cashout</h4>
+          <p class="feature-text">Transfer winnings directly to Paytm, PhonePe, or Google Pay with zero delay.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h4 class="feature-heading">100% Anti-Cheat System</h4>
+          <p class="feature-text">Strict Fair Play guarantee with live referee spectators and instant cheater bans.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-circle gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line></svg>
+          </div>
+          <h4 class="feature-heading">₹10 Free Bonus</h4>
+          <p class="feature-text">Get ₹10 instantly upon registration. Play your very first tournament free!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-STEP "HOW TO PLAY" GUIDE -->
+    <section class="how-to-play-section" id="how-to-play">
+      <div class="section-header">
+        <h3 class="section-title">3 EASY STEPS TO PLAY</h3>
+      </div>
+      <div class="steps-container">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number-badge">1</div>
+          <div class="step-details">
+            <h4 class="step-name">Download & Install APK</h4>
+            <p class="step-desc">Download the light ~3.7 MB app, allow install from browser, and register in 30 seconds.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-number-badge">2</div>
+          <div class="step-details">
+            <h4 class="step-name">Join Custom Room</h4>
+            <p class="step-desc">Select Battle Royale or Clash Squad. Room ID & Password arrive 10 mins before match starts.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number-badge">3</div>
+          <div class="step-details">
+            <h4 class="step-name">Score Kills & Withdraw Cash</h4>
+            <p class="step-desc">Every kill adds real money to your wallet. Request instant payout to your UPI ID!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL COMMUNITY WHATSAPP CTA -->
+    <section class="community-section">
+      <a href="https://chat.whatsapp.com/invite/FireArenaPro" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-community">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 2C6.502 2 2.016 6.486 2.016 12.015c0 1.907.534 3.684 1.464 5.207L2.016 22l4.922-1.428a9.98 9.98 0 0 0 5.093 1.443c5.529 0 10.016-4.486 10.016-10.015S17.56 2 12.031 2zm5.727 14.152c-.244.686-1.416 1.309-1.956 1.393-.509.079-1.157.112-3.708-.94-3.256-1.344-5.326-4.66-5.488-4.877-.162-.217-1.309-1.742-1.309-3.324 0-1.582.827-2.36 1.119-2.685.292-.325.64-.407.854-.407.214 0 .428.002.615.011.198.01.462-.075.722.55.267.64.912 2.227.992 2.39.08.163.133.355.027.572-.107.217-.16.353-.32.54-.16.187-.336.418-.48.56-.16.16-.327.335-.14.656.187.32.83 1.368 1.782 2.217 1.224 1.09 2.256 1.428 2.576 1.588.32.16.508.134.695-.08.187-.214.8-1.02.987-1.37.187-.35.374-.294.628-.199.254.095 1.616.762 1.894.901.278.139.463.208.531.325.068.117.068.681-.176 1.367z"/>
+        </svg>
+        <span>JOIN OFFICIAL TOURNAMENT WHATSAPP</span>
+        <span class="whatsapp-badge">9.4K+</span>
+      </a>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <div class="section-header">
+        <h3 class="section-title">FREQUENTLY ASKED</h3>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>When do I receive Custom Room ID & Password?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Room credentials are sent 10 minutes prior to the scheduled match time via in-app push notification, SMS, and WhatsApp alerts with a 1-tap copy button.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the minimum UPI withdrawal amount?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            You can withdraw as low as ₹20! Payouts are transferred directly to your Google Pay, PhonePe, or Paytm UPI ID within 60 seconds with 0% commission fees.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is this platform safe and anti-cheat protected?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Yes, 100%. Every match is monitored by certified esports tournament referees with spectator anti-cheat logs. Any player found hacking, using macros, or teaming up is permanently banned and disqualified.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I claim the ₹10 signup bonus?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Use code <strong>NAWA3773</strong> during registration in the APK. ₹10 bonus cash will be instantly credited to your wallet, which you can use to enter your first cash tournament!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER WITH LEGAL DISCLAIMER -->
+    <footer class="app-footer">
+      <div class="footer-brand">FIRE <span>ARENA</span> PRO</div>
+      <div class="footer-badges">
+        <span class="age-badge">18+</span>
+        <span class="footer-pill">SKILL-BASED GAMING</span>
+        <span class="footer-pill">FAIR PLAY VERIFIED</span>
+      </div>
+      <p class="footer-disclaimer">
+        Disclaimer: This is a skill-based esports tournament platform. Garena Free Fire is the registered trademark of Garena International. FIRE ARENA PRO is an independent organizer and is not affiliated with or endorsed by Garena. Cash contests are strictly permitted for Indian residents aged 18 and above. Not available for users residing in Assam, Odisha, Telangana, Nagaland, Andhra Pradesh, or Sikkim due to state regulations. Please play responsibly.
+      </p>
+      <div class="footer-copyright">
+        © 2026 FIRE ARENA PRO Esports. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- INTERACTIVE FLOATING NOTIFICATION TOAST -->
+  <div class="floating-ticker-toast" id="liveTickerToast">
+    <div class="toast-icon-box green" id="toastIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="toast-content">
+      <div class="toast-text" id="toastText">Rahul K. withdrew ₹450 to PhonePe</div>
+      <div class="toast-time" id="toastTime">Just now · Verified UPI</div>
+    </div>
+    <button class="toast-close" id="closeToastBtn" aria-label="Dismiss">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <!-- CLIPBOARD COPIED TOAST -->
+  <div class="clipboard-toast" id="clipboardToast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="clipboardToastMsg">Referral code NAWA3773 copied!</span>
+  </div>
+
+  <!-- INSTALLATION GUIDE MODAL / DRAWER -->
+  <div class="modal-backdrop" id="installGuideModal">
+    <div class="modal-drawer">
+      <div class="drawer-handle"></div>
+      <div class="modal-header">
+        <h3 class="modal-title">HOW TO INSTALL APK</h3>
+        <button class="btn-close-modal" id="closeModalBtn" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="guide-steps">
+        <div class="guide-step-item">
+          <div class="guide-step-dot">1</div>
+          <div><strong>Click 'Download APK'</strong> and wait for file <code style="color: #ff8591;">FireArena.apk</code> (~3.7 MB) to download.</div>
+        </div>
+        <div class="guide-step-item">
+          <div class="guide-step-dot">2</div>
+          <div>If prompted with <em>"File might be harmful"</em>, tap <strong>"Download anyway"</strong> (This is standard for all direct Android APKs).</div>
+        </div>
+        <div class="guide-step-item">
+          <div class="guide-step-dot">3</div>
+          <div>Open the downloaded file and tap <strong>"Install"</strong>. Allow installation from unknown sources if requested.</div>
+        </div>
+        <div class="guide-step-item">
+          <div class="guide-step-dot">4</div>
+          <div>Open <strong>FIRE ARENA PRO</strong>, enter code <strong>NAWA3773</strong>, and claim your ₹10 signup bonus!</div>
+        </div>
+      </div>
+
+      <a href="/app-release.apk" download="FireArena.apk" class="btn-download-primary" id="modalDownloadBtn" style="animation: none;">
+        <span>DOWNLOAD FIRE ARENA APK</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- VANILLA JAVASCRIPT LOGIC -->
+  <script>
+    (function() {
+      // 1. DIRECT APK DOWNLOAD HANDLER (Ensures download starts reliably across Vercel / Parcel / Dev)
+      function triggerDirectDownload(e) {
+        // Log or trigger direct download
+        const downloadUrl = '/app-release.apk';
+        const fileName = 'FireArena.apk';
+
+        // Check if download is natively supported, fallback to Blob if static file fails
+        try {
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = fileName;
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => document.body.removeChild(a), 300);
+        } catch (err) {
+          console.warn('Direct link failed, trying fallback blob', err);
+          const sampleBlob = new Blob(["FIRE ARENA PRO OFFICIAL APK PACKAGE v1.0"], { type: 'application/vnd.android.package-archive' });
+          const blobUrl = URL.createObjectURL(sampleBlob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobUrl);
+          }, 500);
+        }
+
+        // Show brief guidance toast
+        showToastNotification("Starting FireArena.apk download (~3.7 MB)...", "download");
+      }
+
+      // Attach download triggers
+      const downloadButtons = [
+        document.getElementById('mainDownloadBtn'),
+        document.getElementById('navDownloadBtn'),
+        document.getElementById('modalDownloadBtn')
+      ];
+
+      downloadButtons.forEach(btn => {
+        if (btn) {
+          btn.addEventListener('click', function(e) {
+            // Keep default href & download action, and also trigger notification
+            showToastNotification("Downloading FireArena.apk (3.7 MB)... Check notifications!", "download");
+          });
+        }
+      });
+
+      // Match Card "JOIN" buttons trigger download / modal
+      document.querySelectorAll('.trigger-download').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openInstallModal();
+        });
+      });
+
+      // 2. REFERRAL CODE COPY WITH HAPTIC & TOAST
+      const copyBtn = document.getElementById('btnCopyCode');
+      const refCodeText = document.getElementById('refCodeText').innerText.trim();
+      const clipboardToast = document.getElementById('clipboardToast');
+      const clipboardToastMsg = document.getElementById('clipboardToastMsg');
+      const copyBtnLabel = document.getElementById('copyBtnLabel');
+
+      copyBtn.addEventListener('click', function() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(refCodeText).then(onCopySuccess).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+      });
+
+      function fallbackCopy() {
+        const textarea = document.createElement('textarea');
+        textarea.value = refCodeText;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          onCopySuccess();
+        } catch (e) {
+          alert('Referral Code: ' + refCodeText);
+        }
+        document.body.removeChild(textarea);
+      }
+
+      function onCopySuccess() {
+        copyBtn.classList.add('copied');
+        copyBtnLabel.innerText = 'COPIED!';
+        
+        // Show clipboard toast
+        clipboardToastMsg.innerText = 'Code ' + refCodeText + ' copied! Claim ₹10 bonus';
+        clipboardToast.classList.add('active');
+
+        // Optional device vibration if supported
+        if ('vibrate' in navigator) {
+          try { navigator.vibrate(50); } catch (e) {}
+        }
+
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtnLabel.innerText = 'COPY CODE';
+        }, 2500);
+
+        setTimeout(() => {
+          clipboardToast.classList.remove('active');
+        }, 3000);
+      }
+
+      // 3. TOURNAMENT FILTER TABS
+      const tabButtons = document.querySelectorAll('.match-tab-btn');
+      const matchCards = document.querySelectorAll('.match-card');
+
+      tabButtons.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const filter = this.getAttribute('data-filter');
+          matchCards.forEach(card => {
+            const cardMode = card.getAttribute('data-mode');
+            if (filter === 'all' || cardMode === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 4. FAQ ACCORDION
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          faqItems.forEach(i => i.classList.remove('open'));
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+      // 5. INSTALLATION GUIDE MODAL / DRAWER
+      const installModal = document.getElementById('installGuideModal');
+      const openGuideLink = document.getElementById('openGuideLink');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      function openInstallModal() {
+        installModal.classList.add('active');
+      }
+
+      function closeInstallModal() {
+        installModal.classList.remove('active');
+      }
+
+      if (openGuideLink) openGuideLink.addEventListener('click', (e) => { e.preventDefault(); openInstallModal(); });
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeInstallModal);
+      installModal.addEventListener('click', (e) => {
+        if (e.target === installModal) closeInstallModal();
+      });
+
+      // 6. LIVE TICKER FLOATING NOTIFICATION TOAST
+      const liveTickerToast = document.getElementById('liveTickerToast');
+      const toastText = document.getElementById('toastText');
+      const toastTime = document.getElementById('toastTime');
+      const toastIcon = document.getElementById('toastIcon');
+      const closeToastBtn = document.getElementById('closeToastBtn');
+
+      const mockLiveActivities = [
+        { text: "Rahul K. just withdrew ₹450 to PhonePe", time: "1 min ago · Instant UPI", type: "money" },
+        { text: "Vikram Singh joined Solo BR Room #408", time: "30s ago · Bermuda Map", type: "game" },
+        { text: "Aman Deep won ₹350 Booyah cashout", time: "3 mins ago · 9 Kills", type: "money" },
+        { text: "Sameer Q. withdrew ₹280 to Google Pay", time: "Just now · Instant UPI", type: "money" },
+        { text: "Team Hydra registered for Clash Squad #112", time: "45s ago · Kalahari", type: "game" },
+        { text: "Dev Patel scored 8 kills (₹120) in Solo BR", time: "2 mins ago · Verified", type: "money" },
+        { text: "Pooja M. withdrew ₹520 to Paytm Wallet", time: "4 mins ago · Instant UPI", type: "money" }
+      ];
+
+      let activityIndex = 0;
+      let toastTimeout;
+
+      function showNextActivity() {
+        const act = mockLiveActivities[activityIndex];
+        activityIndex = (activityIndex + 1) % mockLiveActivities.length;
+
+        toastText.innerText = act.text;
+        toastTime.innerText = act.time;
+
+        if (act.type === 'money') {
+          toastIcon.className = 'toast-icon-box green';
+          toastIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        } else {
+          toastIcon.className = 'toast-icon-box';
+          toastIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>';
+        }
+
+        liveTickerToast.classList.add('show');
+
+        // Hide after 3.8s, next in 6s
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          liveTickerToast.classList.remove('show');
+        }, 3800);
+      }
+
+      // Start ticker loop after 2 seconds
+      setTimeout(() => {
+        showNextActivity();
+        setInterval(showNextActivity, 6500);
+      }, 2000);
+
+      closeToastBtn.addEventListener('click', () => {
+        liveTickerToast.classList.remove('show');
+        clearTimeout(toastTimeout);
+      });
+
+      function showToastNotification(msg, type) {
+        toastText.innerText = msg;
+        toastTime.innerText = "FIRE ARENA PRO v1.0";
+        toastIcon.className = 'toast-icon-box';
+        toastIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>';
+        liveTickerToast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          liveTickerToast.classList.remove('show');
+        }, 3500);
+      }
+
+      // 7. DYNAMIC LIVE COUNTER NUMBER ANIMATION
+      function animateCounters() {
+        const playersEl = document.getElementById('counterPlayers');
+        const payoutEl = document.getElementById('counterPayout');
+        const matchesEl = document.getElementById('counterMatches');
+
+        let players = 2810;
+        let payout = 48500;
+        let matches = 1220;
+
+        const interval = setInterval(() => {
+          if (players < 2854) {
+            players += 2;
+            playersEl.innerText = players.toLocaleString() + '+';
+          }
+          if (payout < 50400) {
+            payout += 110;
+            payoutEl.innerText = '₹' + Math.floor(payout / 1000) + 'K+';
+          }
+          if (matches < 1242) {
+            matches += 1;
+            matchesEl.innerText = matches.toLocaleString() + '+';
+          }
+          if (players >= 2854 && payout >= 50400 && matches >= 1242) {
+            clearInterval(interval);
+          }
+        }, 50);
+      }
+
+      // Trigger counter animation on scroll into view or after 800ms
+      setTimeout(animateCounters, 600);
+
+    })();
+  </script>
+</body>
+</html>
